@@ -1,2 +1,2 @@
-class Boo < ApplicationRecord
+class Book < ApplicationRecord
 end

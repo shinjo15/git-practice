@@ -1,8 +1,26 @@
 <h1>Books</h1>
 
-<%= @lists.each do |list| %>
+<% @lists.each do |book| %>
 
-  <p>タイトル</p>
-  <span><%= list.title %></span>
-  
+ <p>Title</p>
+ <span><%= book.title %></span>
+ <p>body</p>
+ <span><%= book.body %></span>
+ 
+ <span><%= link_to "show", book_path(book.id)%></span>
+ <span><%= link_to "Edit", edit_book_path(book.id)%></span>
+ <span><%= link_to "Destroy", destroy_book_path(book.id). method: :delete, "date-confirm" => "本当に削除しますか？"%></span>
+ 
+<% end %>
+
+<h2>New books</h2>
+
+<%= form_with model: @books, url: '/books', method: :post do |f| %>
+ <p>Title</p>
+ <%= f.text_field :title %>
+ 
+ <p>Body</p>
+ <%= f.text_area :body %>
+ 
+ <%= f.submit 'Create Book'%>
 <% end %>
