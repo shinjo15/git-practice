@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = params()
-    @books = @user.books
+    # @user = params()
+    # @books = @user.books
   end
 
   def edit
