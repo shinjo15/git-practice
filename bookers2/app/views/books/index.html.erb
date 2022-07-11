@@ -1,5 +1,15 @@
+<h1>User info</h1>
+
+<p>name</p>
+<p>introduction</p>
+
+<%= link_to "edit", "/users/:id/edit" %>
+
 <h1>Now book</h1>
-<%= form_with model:Book.new do |f| %>
+<%= form_with model:@book do |f| %>
+
+<%= f.file_field :image, accept: "iamge/*" %>
+
 <h4>Title</h4>
 <%= f.text_field :title %>
 
