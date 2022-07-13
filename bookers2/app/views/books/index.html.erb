@@ -1,14 +1,23 @@
 <h1>User info</h1>
 
-<p>name</p>
-<p>introduction</p>
+<%= image_tag @user.get_profile_image(100, 100) %>
+
+<table class="table table-striped">
+ <tr>
+  <td>name</td>
+  <td><%= @user.name %></td>
+ </tr>
+ <tr>
+  <td>introduction</td>
+  <td><%= @user.introduction %></td>
+ </tr>
+</table>
+
 
 <%= link_to "edit", "/users/:id/edit" %>
 
 <h1>Now book</h1>
 <%= form_with model:@book do |f| %>
-
-<%= f.file_field :image, accept: "iamge/*" %>
 
 <h4>Title</h4>
 <%= f.text_field :title %>
@@ -22,9 +31,24 @@
 
 
 <h1>Books</h1>
- <% @books.each do |book| %>
  
- <p><%= book.title %></p>
- <p><%= book.body %></p>
- 
- <% end %>
+<div class="books-box">
+ <table>
+   <thead>
+    <tr>
+     <th>Title</th>
+     <th>Opinion</th>
+     <th colspan="3"></th>
+    </tr>
+   </thead>
+   
+   <% @books.each do |book| %>
+   <tbody>
+    <tr>
+     <td><%= link_to book.title,  books_path(book.id) %></td>
+     <td><%= book.body %></td>
+    </tr>
+   </tbody>
+  <% end %>
+ </table>
+</div>
