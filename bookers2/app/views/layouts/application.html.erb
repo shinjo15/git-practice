@@ -39,16 +39,16 @@
                 </li>
                <% else %>
                 <li>
-                 <%= link_to "Home", root_path, class: 'nav-link text-light' %>
+                 <%= link_to icon('fas','home',"Home"), root_path, class: 'nav-link text-light' %>
                 </li>
                 <li>
-                 <%= link_to "About", about_path, class: 'nav-link text-light' %>
+                 <%= link_to icon('fas','link',"About"), about_path, class: 'nav-link text-light' %>
                 </li>
                 <li>
-                 <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
+                 <%= link_to icon('fas','user-plus',"Sign up"), new_user_registration_path, class: 'nav-link text-light' %>
                 </li>
                 <li>
-                 <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
+                 <%= link_to icon('fas','sign-in-alt',"Log in"), new_user_session_path, class: 'nav-link text-light' %>
                 </li>
                <% end %>
             </ul>
