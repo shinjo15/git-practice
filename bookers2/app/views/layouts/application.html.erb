@@ -55,9 +55,12 @@
           </div>
         </div>
       </nav>
-      
     </header>
-    <%= yield %>
+  　 <% flash.each do |message_type, message| %>  
+  　   <p id="<%= message_type %>"><%= message %></p>
+  　 <% end %>
+  　 <%= yield %>
+  　
     <footer>
       <div class="container mt-5">
         <div class="row">
