@@ -6,12 +6,14 @@
  <table class="table">
   <tbody>
    <tr>
-    <td><%= link_to user_path(@books.user.id) do %>
-        <%= image_tag(@books.user.get_profile_image(100, 100)) %>
+    <td><%= link_to user_path(@bookfind.user.id) do %>
+        <%= image_tag(@bookfind.user.get_profile_image(100, 100)) %>
         <br><%= @user.name %>
         <% end %></td>
-    <td><%= link_to @books.title, book_path(@books.id) %></td>
-    <td><%= @books.body %></td>
+    <td><%= link_to @bookfind.title, book_path(@bookfind.id) %></td>
+    <td><%= @bookfind.body %></td>
+    <td><%= link_to "Edit", edit_book_path(@bookfind.id), class: 'btn btn-sm btn-success edit_book_id' %></td>
+    <td><%= link_to "Destroy", book_path(@bookfind.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger destroy_book_id' %></td>
    </tr>
   </tbody>
  </table>
