@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  
   def new
     @book = Book.new
   end
@@ -9,6 +10,8 @@ class BooksController < ApplicationController
     if @book.save
      redirect_to books_path, notice: "You have created book successfully."
     else
+      @user = current_user
+      @books = Book.all
       render :index
     end
   end
@@ -49,4 +52,5 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
   
+ 
 end
