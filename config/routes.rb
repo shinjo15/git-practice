@@ -7,19 +7,22 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
   
-  root to: 'homes#top'
-  get 'homes/about' => 'homes#about', as: "about"
+  scope module: :public do
+    root to: 'homes#top'
+    get 'homes/about' => 'homes#about', as: "about"
   
-  resources :items, only: [:index, :show]
-  resources :customers, only: [:show, :edit, :update]
-  get 'customers/unsubscribe' => 'customers#unsubscribe'
-  patch 'customers/withdraw' => 'customers#withdraw'
-  resources :cart_items, only: [:index, :update, :create, :destroy]
-  delete 'customers/destroy_all' => 'customers#destroy_all'
-  resources :orders, only: [:new, :create, :index, :show]
-  post 'customers/confirm' => 'customers#confirm'
-  get 'customers/complete' => 'customers#complete'
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
+    delete 'customers/destroy_all' => 'customers#destroy_all'
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'customers/confirm' => 'customers#confirm'
+    get 'customers/complete' => 'customers#complete'
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
   
   namespace :admin do
     get 'homes/top' => 'homes#top', as: "/admin"
