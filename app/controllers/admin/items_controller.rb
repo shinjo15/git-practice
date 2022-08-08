@@ -23,7 +23,6 @@ class Admin::ItemsController < ApplicationController
   def update
   end
   
-  
 
   private
 
