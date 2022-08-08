@@ -1,6 +1,6 @@
 <h2>商品新規登録</h2>
 
-<%= form_with model:@item, url: admin_items_path do |f| %>
+<%= form_with model: @item, url: admin_items_path do |f| %>
   <label>商品画像</label>
     <%= f.file_field :image, accept: "image/*" %><br>
   <label>商品名</label>
@@ -12,10 +12,10 @@
   <label>税抜価格</label>
     <%= f.text_field :price %><label>円</label><br>
   <label>販売ステータス</label>
-    <%= f.radio_button :is_active, Item.is_actives.key(0) %>
-    <%= f.label :is_active, Item.is_actives_i18n[:sale] %>
-    <%= f.radio_button :is_active, Item.is_actives.key(1) %>
-    <%= f.label :is_active, Item.is_actives_i18n[:selling_discontinued] %><br>
+    <%= f.radio_button :is_active, true %>
+    <%= f.label :is_active, '販売中', value: true %>
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :is_active, '販売停止中', value: false %><br>
 
   <%= f.submit "新規登録" %>
 
