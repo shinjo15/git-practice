@@ -19,10 +19,16 @@
       <% end %>
       <td><%= @sam %></td>
       <td>
-        <% if item.is_active? %>
-          販売中
+        <% if order.order_status == 0 %>
+          入金待ち
+        <% elsif order.order_status == 1 %>
+          入金確認
+        <% elsif order.order_status == 2 %>
+          制作中
+        <% elsif order.order_status == 3 %>
+          発送準備中
         <% else %>
-          販売停止中
+          発送済み
         <% end %>
       </td>
     </tr>

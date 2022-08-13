@@ -4,3 +4,11 @@ ja:
       is_active:
         sale: "販売中"
         selling_discontinued: "販売停止中"
+        
+    order:
+      order_status:
+        waiting_for_payment: "入金待ち"
+        payment_confirmation: "入金確認"
+        production: "制作中"
+        preparing_to_ship: "発送準備中"
+        sent: "発送済み"
