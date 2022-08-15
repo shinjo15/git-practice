@@ -1,14 +1,14 @@
 <h2>商品一覧</h2>
 <%= link_to "新規登録", new_admin_item_path %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+      <th class="col-lg-1">商品ID</th>
+      <th class="col-lg-3">商品名</th>
+      <th class="col-lg-1">税抜価格</th>
+      <th class="col-lg-3">ジャンル</th>
+      <th class="col-lg-1">ステータス</th>
     </tr>
   </thead>
   <% @items.each do |item| %>

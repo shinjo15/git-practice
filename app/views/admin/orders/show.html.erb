@@ -1,0 +1,33 @@
+<h2>注文履歴詳細</h2>
+
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td>購入者</td>
+      <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @order.postal_code %> <% @order.address %><br>
+          <% @order.name %></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td> <% if @order.payment_method == 0 %>
+            クレジットカード
+          <% else %>
+            銀行振込
+          <% end %></td>
+    </tr>
+    <tr>
+      <td>会員ステータス</td>
+      <td>
+        <%= f.select :order_status, options_from_collection_for_select(Order.all, :id, :order_status) %></td>
+    </tr>
+  </tbody>
+</table>

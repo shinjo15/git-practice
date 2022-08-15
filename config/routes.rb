@@ -29,11 +29,11 @@ devise_for :admin, controllers: {
   end
 
   namespace :admin do
-    get 'homes/top' => 'homes#top', as: ""
+    get 'admin' => 'homes#top', as: ""
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [ :show, :update]
+    resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
     end
 
