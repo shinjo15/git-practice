@@ -1,7 +1,7 @@
 class Customer < ApplicationRecord
-  has_many :order
-  has_many :cart_item
-  has_many :address
+  has_many :orders
+  has_many :cart_items
+  has_many :addreses
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
