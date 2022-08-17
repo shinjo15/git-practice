@@ -1,0 +1,25 @@
+<h2>マイページ</h2>
+
+<p>登録情報<%= link_to "編集する", edit_customer_path, class: 'btn btn-outline-secondary' %></p>
+
+<table>
+  <thead>
+    <tr><td>氏名</td></tr>
+    <tr><td>カナ</td></tr>
+    <tr><td>郵便番号</td></tr>
+    <tr><td>住所</td></tr>
+    <tr><td>電話番号</td></tr>
+    <tr><td>メールアドレス</td></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @customer.last_name %><%= @customer.first_name %></td>
+    </tr>
+    <tr><td>カナ</td></tr>
+    <tr><td>郵便番号</td></tr>
+    <tr><td>住所</td></tr>
+    <tr><td>電話番号</td></tr>
+    <tr><td>メールアドレス</td></tr>
+  </tbody>
+</table>
+
