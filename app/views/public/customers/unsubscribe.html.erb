@@ -1,0 +1,12 @@
+<p>本当に退会しますか？</p>
+<p>退会すると、会員登録情報や<br>
+  これまでの購入履歴が閲覧できなくなります。<br>
+  退会する場合は、「退会する」をクリックしてください。</p>
+  
+  <%= link_to "退会しない", customers_my_page_path(@user.id), class: 'btn btn-outline-secondary' %>
+  
+  <%= form_with model: @user, url: customer_path(@user.id) do |f| %>
+    <%= f.hidden_field :is_active, :value => "1" %>
+  <%= f.submit "変更を保存" %>
+
+<% end %>
