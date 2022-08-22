@@ -10,22 +10,21 @@ class Public::CustomersController < ApplicationController
   def update
     @user = current_customer
     if @user.update(customer_params)
-      redirect_to customers_my_page_path(@user.id)
+      redirect_to  customers_my_page_path
     else
       render :edit
     end
   end
 
   def unsubscribe
-     @user = current_customer
-    if @user.update(customer_params)
-      redirect_to customers_my_page_path(@user.id)
-    else
-      render :edit
-    end
+    @user = current_customer
   end
 
   def withdraw
+    @customer = current_customer
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   def customer_params
