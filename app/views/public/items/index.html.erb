@@ -1,0 +1,14 @@
+<%= render 'public/homes/genre_search', genre: @genre %>
+
+<h2>商品一覧</h2><h4>(全<%= Item.where(is_active: 'true').count %>件)</h4>
+
+<ul class="list-inline">
+  <% @items.each do |items| %>
+  <div class="list-inline-item">
+    <%= image_tag items.image %><br>
+    <%= items.name %><br>
+    <%= (items.price*1.1).floor.to_s(:delimited) %>円
+  </div>
+  <% end %>
+</ul>
+<%= paginate @items %>
