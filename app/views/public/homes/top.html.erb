@@ -1,23 +1,22 @@
-<table>
-  <thead>ジャンル検索</thead>
-  <tbody>
-    <% @genre.each do |genre| %>
-      <th><%= genre.name %></th>
-    <% end %>
-  </tbody>
-</table>
-
-<p>ようこそながのCAKEへ!<br>
-   このサイトは、ケーキ販売のECサイトになります。<br>
-   会員でない方も商品の閲覧はできますが、<br>
-   購入には会員登録が必要になります。</p>
+<%= render 'genre_search', genre: @genre %>
+<div class="container">
+  <div class="row-lg-10">
+    <p>ようこそながのCAKEへ!<br>
+     このサイトは、ケーキ販売のECサイトになります。<br>
+     会員でない方も商品の閲覧はできますが、<br>
+     購入には会員登録が必要になります。</p>
 
 
- 新着商品
-    <% @items.each do |items| %>
-      <%= image_tag items.image %>
-      <%= items.name %>
-      <%= (items.price*1.1).floor.to_s(:delimited) %>円
-    <% end %>
-    
+   <h3><strong>新着商品</h3>
+   <ul class="list-inline">
+      <% @items.each do |items| %>
+      <div class="list-inline-item">
+        <%= image_tag items.image %><br>
+        <%= items.name %><br>
+       <%= (items.price*1.1).floor.to_s(:delimited) %>円
+      </div>
+      <% end %>
+    </ul>
     <%= link_to "全ての商品を見る＞", items_path %>
+  </div>
+</div>
