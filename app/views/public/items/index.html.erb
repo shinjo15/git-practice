@@ -5,9 +5,11 @@
 <ul class="list-inline">
   <% @items.each do |items| %>
   <div class="list-inline-item">
-    <%= image_tag items.image %><br>
-    <%= items.name %><br>
-    <%= (items.price*1.1).floor.to_s(:delimited) %>円
+    <%= link_to item_path(items.id) do %>
+      <%= image_tag items.image %><br>
+      <%= items.name %><br>
+      <%= (items.price*1.1).floor.to_s(:delimited) %>円
+    <% end %>
   </div>
   <% end %>
 </ul>

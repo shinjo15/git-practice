@@ -1,0 +1,26 @@
+<%= render 'public/homes/genre_search', genre: @genre %>
+
+<%= image_tag @item.image %>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td><%= @item.name %></td>
+    </tr>
+    <tr>
+      <td><%= @item.introduction %></td>
+    </tr>
+    <tr>
+      <td>
+        ￥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= form_with model: @cart_item　do |f| %>
+          <%= f.select :amount, *[1..10] %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
