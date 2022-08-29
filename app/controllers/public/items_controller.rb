@@ -6,8 +6,8 @@ class Public::ItemsController < ApplicationController
   
   def show
     @genre = Genre.all
-    @cart_item = Cart_item.find(params[:id])
     @item = Item.find(params[:id])
+    @cart_item = CartItem.new
   end
   
   private

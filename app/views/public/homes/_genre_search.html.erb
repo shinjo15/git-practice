@@ -1,11 +1,11 @@
-<div class="row-lg-2">
-  <table class="table">
+<div class="col-lg-3">
+  <table class="table table-bordered">
     <thead>
-      <tr scope="col">ジャンル検索</tr>
+      <th>ジャンル検索</tr>
     </thead>
     <tbody>
       <% genre.each do |genre| %>
-        <th scope="col"><%= genre.name %></th>
+        <th><%= genre.name %></th>
       <% end %>
     </tbody>
   </table>
