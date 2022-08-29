@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_item =CartItem.all
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def update
@@ -18,6 +19,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
+    @customer = current_customer
+    @customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   def create

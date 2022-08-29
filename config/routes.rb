@@ -21,8 +21,8 @@ devise_for :admin, controllers: {
     resources :customers, only: [:edit, :update]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     get 'customers/my_page' => 'customers#show'
-    resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post 'customers/confirm' => 'customers#confirm'
     get 'customers/complete' => 'customers#complete'

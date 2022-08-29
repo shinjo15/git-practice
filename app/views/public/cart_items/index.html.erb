@@ -11,7 +11,7 @@
     <th></th>
   </thead>
   <tbody>
-    <% @cart_item.each do |cart_item| %>
+    <% @cart_items.each do |cart_item| %>
     <tr>
         <td><%= cart_item.item.name %></td>
         <td><%= (cart_item.item.price*1.1).floor.to_s(:delimited) %></td>
@@ -21,7 +21,7 @@
             <%= f.submit "変更" %>
           <% end %>
         <td>
-        <td><%= (cart_item.item.price*1.1).floor.to_s(:delimited)*cart_item.amount %></td>
+        <td>¥<%= @total.round.to_s(:delimited)%></td>
         <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: 'btn btn-sm btn-danger destroy_book_id' %></td>
     <% end %>
     </tr>
