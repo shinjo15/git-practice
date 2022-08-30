@@ -24,8 +24,8 @@ devise_for :admin, controllers: {
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :create, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
-    post 'customers/confirm' => 'customers#confirm'
-    get 'customers/complete' => 'customers#complete'
+    get 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 

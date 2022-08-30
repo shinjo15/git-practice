@@ -11,7 +11,7 @@
     <%= f.radio_button :current_customer,current_customer.address , checked: true %>
       <%= f.label current_customer.address %><br>
       
-    <%= f.radio_button :address,address_id %>
+    <%= f.radio_button :address,address %>
       <%= f.label "登録済み住所から選択" %><br>
       <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
     
@@ -27,6 +27,6 @@
       <% end %>
  
 
-  <%= f.submit "新規登録" %>
+  <%= f.submit "確認画面に進む" %>
 
 <% end %>
