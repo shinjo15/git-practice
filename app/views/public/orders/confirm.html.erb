@@ -24,6 +24,7 @@
   <tbody>
     <tr>
       <td>送料</td>
+      <td><%= @order.postage %></td>
     </tr>
     <tr>
       <td>商品合計</td>
@@ -31,9 +32,18 @@
     </tr>
     <tr>
       <td>請求金額</td>
-      <td><%= @total.round.to_s(:delimited) += postage  %></td>
+      <td><%= (@total + @order.postage).round.to_s(:delimited) %></td>
     </tr>
   </tbody>
 </table>
+
+<p>お届け先</p>
+<% if address_select == 0 %>
+    <%= current_customer.address_display %>
+  <% elsif address_select == 1 %>
+    <%= address_id %>
+  <% else %>
+     <%= address_display %>
+<% end %>
 
 
