@@ -32,18 +32,19 @@
     </tr>
     <tr>
       <td>請求金額</td>
-      <td><%= (@total + @order.postage).round.to_s(:delimited) %></td>
+      <td><%= (@total += @order.postage).round.to_s(:delimited) %></td>
     </tr>
   </tbody>
 </table>
 
-<p>お届け先</p>
-<% if address_select == 0 %>
-    <%= current_customer.address_display %>
-  <% elsif address_select == 1 %>
-    <%= address_id %>
+<p>支払方法</p>
+  <% if @payment_method == "credit_card" %>
+      クレジットカード
   <% else %>
-     <%= address_display %>
-<% end %>
+      銀行振込
+  <% end %>
+<p>お届け先</p>
+    <%= @order.address_display %>
+
 
 
