@@ -45,6 +45,20 @@
   <% end %>
 <p>お届け先</p>
     <%= @order.address_display %>
+    
+<%= form_with @cart_items, method: :post, url: orders_complete_path do |f| %>
+	<%= f.hidden_field :order_id, :value => carrent_order.id %>
+	<%= f.hidden_field :item_id, :value => cart_item.id %>
+	<%= f.hidden_field :amount, :value =>cart_item.amount %>
+	<%= f.hidden_field :purchase_price, :value => (cart_item.item.price*1.1).floor.to_s(:delimited) %>
+<% end %>
 
+<%= form_with @order, method: :post, url: orders_complete_path do |f| %>
+	<%= f.hidden_field :payment_method %>
+	<%= f.hidden_field :postal_code %>
+	<%= f.hidden_field :address %>
+	<%= f.hidden_field :postage, :value => (@total += @order.postage).round.to_s(:delimited) %>
+	<%= f.submit '送信する' %>
+<% end %>
 
 
