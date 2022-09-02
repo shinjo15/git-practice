@@ -24,6 +24,7 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     end
+
   end
 
   def complete
