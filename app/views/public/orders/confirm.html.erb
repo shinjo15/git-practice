@@ -45,10 +45,10 @@
   <% end %>
 <p>お届け先</p>
     <%= @order.address_display %>
-    
 
 
-<%= form_with model: @order, url: orders_complete_path, method: :get do |f| %>
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
   <%= f.hidden_field :customer_id, :value => current_customer.id %>
 	<%= f.hidden_field :payment_method, :value => @order.payment_method %>
 	<%= f.hidden_field :postal_code, :value => @order.postal_code %>
