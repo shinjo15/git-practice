@@ -8,4 +8,18 @@ class Order < ApplicationRecord
   def address_display
     '〒' + postal_code + ' ' + address + ' ' + name
   end
+  
+  def order_status_display
+    if order_status == 0
+      入金待ち
+    elsif order_status == 1
+      入金確認
+    elsif order_status == 2
+      制作中
+    elsif order_status == 3
+      発送準備中
+    else
+      発送済み
+    end
+  end
 end
