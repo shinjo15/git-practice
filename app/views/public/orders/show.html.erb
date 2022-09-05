@@ -52,16 +52,12 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= @order.order_items.item.name %></td>
-    </tr>
-    <tr>
-      <td><%= @order.order_items.purchase_price %></td>
-    </tr>
-    <tr>
-      <td><%= @order.order_items.amount %></td>
-    </tr>
-     <tr>
-      <td><%= @order.order_items.purchase_price * @order.order_items.amount %></td>
+      <% @order.order_items.each do |order_item| %>
+        <td><%= order_item.item.name %></td>
+        <td><%= (order_item.purchase_price*1.1).floor.to_s(:delimited) %></td>
+        <td><%= order_item.amount %></td>
+        <td><%= (order_item.purchase_price*1.1 * order_item.amount).floor.to_s(:delimited) %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>

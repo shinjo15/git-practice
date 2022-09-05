@@ -15,7 +15,7 @@
         <td><%= order.created_at %></td>
         <td><%= order.address_display %></td>
           <% order.order_items.each do |order_item| %>
-            <td><%= order_item.item.name %></th>
+            <td><%= order_item.item.name %></td>
           <% end %>
         <td><%= order.payment_amount %></td>
         <td><%= order.order_status_display %></td>
