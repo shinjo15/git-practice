@@ -55,7 +55,7 @@
 	<%= f.hidden_field :address, :value => @order.address %>
 	<%= f.hidden_field :name, :value => @order.name %>
 	<%= f.hidden_field :postage, :value => @order.postage %>
-	<%= f.hidden_field :payment_amount, :value => @total.round.to_s(:delimited) %>
+	<%= f.hidden_field :payment_amount, :value => @total %>
 	<%= f.submit '送信する' %>
 <% end %>
 

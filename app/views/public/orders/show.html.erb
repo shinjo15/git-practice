@@ -1,0 +1,67 @@
+<h2>注文履歴詳細</h2>
+
+<p>注文情報</p>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @order.address_display %></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @order.payment_method_display %></td>
+    </tr>
+    <tr>
+      <td>ステータス</td>
+      <td><%= @order.order_status_display %></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>請求情報</p>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @total %></td>
+    </tr>
+    <tr>
+      <td>配送料</td>
+      <td><%= @order.postage %></td>
+    </tr>
+    <tr>
+      <td>ご請求額</td>
+      <td><%= @order.payment_amount %></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>注文内容</p>
+<table>
+  <thead>
+    <th>商品</th>
+    <th>単価(税込)</th>
+    <th>個数</th>
+    <th>小計</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @order.order_items.item.name %></td>
+    </tr>
+    <tr>
+      <td><%= @order.order_items.purchase_price %></td>
+    </tr>
+    <tr>
+      <td><%= @order.order_items.amount %></td>
+    </tr>
+     <tr>
+      <td><%= @order.order_items.purchase_price * @order.order_items.amount %></td>
+    </tr>
+  </tbody>
+</table>

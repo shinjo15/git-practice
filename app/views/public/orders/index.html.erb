@@ -14,10 +14,12 @@
     <tr>
         <td><%= order.created_at %></td>
         <td><%= order.address_display %></td>
-        <td><%= order.order_item.item.name %><td>
-        <td><%= order.order_item.purchase_price %>円</td>
+          <% order.order_items.each do |order_item| %>
+            <td><%= order_item.item.name %></th>
+          <% end %>
+        <td><%= order.payment_amount %></td>
         <td><%= order.order_status_display %></td>
-        <td><%= link_to "表示する", order_path(item.id) %></td>
+        <td><%= link_to "表示する", order_path(order.id) %></td>
     <% end %>
     </tr>
   </tbody>
