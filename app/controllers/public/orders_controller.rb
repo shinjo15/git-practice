@@ -55,6 +55,8 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @orders = Order.all
+    @order_items = @order.order_items
+    @total = @order_items.inject(0) { |sum, item| sum + item.sum_of_price }.to_i
   end
 
   private

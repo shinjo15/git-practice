@@ -1,6 +1,7 @@
-class Admin::OrdersController < 
+class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @name = @order.customer.last_name+@order.customer.first_name
   end
   
   def update
