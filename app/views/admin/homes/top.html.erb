@@ -1,39 +1,41 @@
 <div class="container">
-<h2>注文履歴一覧</h2>
-
-<table class="table">
-  <thead class="table-secondary">
-    <tr>
-      <th scope="col">購入日時</th>
-      <th scope="col">購入者</th>
-      <th scope="col">注文個数</th>
-      <th scope="col">注文ステータス</th>
-    </tr>
-  </thead>
-  <% @orders.each do |order| %>
-  <tbody>
-    <tr>
-      <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
-      <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-      <% order.order_items.each do |item| %>
-        <% @sam += item.amount %>
+  <div class="container col-10">
+    <h4 class="m-2 my-4"><span class="bg-light">注文履歴一覧</span></h4>
+    <table class="table">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col" style="width: 25%">購入日時</th>
+          <th scope="col" style="width: 25%">購入者</th>
+          <th scope="col" style="width: 25%">注文個数</th>
+          <th scope="col" style="width: 25%">注文ステータス</th>
+        </tr>
+      </thead>
+      <% @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+          <% order.order_items.each do |item| %>
+            <% @sam += item.amount %>
+          <% end %>
+          <td><%= @sam %></td>
+          <td>
+            <% if order.order_status == 0 %>
+              入金待ち
+            <% elsif order.order_status == 1 %>
+              入金確認
+            <% elsif order.order_status == 2 %>
+              制作中
+            <% elsif order.order_status == 3 %>
+              発送準備中
+            <% else %>
+              発送済み
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
       <% end %>
-      <td><%= @sam %></td>
-      <td>
-        <% if order.order_status == 0 %>
-          入金待ち
-        <% elsif order.order_status == 1 %>
-          入金確認
-        <% elsif order.order_status == 2 %>
-          制作中
-        <% elsif order.order_status == 3 %>
-          発送準備中
-        <% else %>
-          発送済み
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+    </table>
+    <%= paginate @orders %>
+  </div>
 </div>
