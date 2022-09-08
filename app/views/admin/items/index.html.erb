@@ -1,32 +1,43 @@
-<h2>商品一覧</h2>
-<%= link_to "新規登録", new_admin_item_path %>
+<div class="container">
+  <div class="row">
+    <h4 class="m-2 my-4"><span class="bg-light">商品一覧</span></h4>
+    <div class=" col m-2 text-right">
+      <%= link_to "新規登録", new_admin_item_path %>
+    </div>
+  </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th class="col-lg-1">商品ID</th>
-      <th class="col-lg-3">商品名</th>
-      <th class="col-lg-1">税抜価格</th>
-      <th class="col-lg-3">ジャンル</th>
-      <th class="col-lg-1">ステータス</th>
-    </tr>
-  </thead>
-  <% @items.each do |item| %>
-  <tbody>
-    <tr>
-      <td><%= item.id%></td>
-      <td><%= link_to item.name, admin_item_path(item.id) %></td>
-      <td><%= item.price.to_s(:delimited) %></td>
-      <td><%= item.genre.name %></td>
-      <td>
-        <% if item.is_active? %>
-          販売中
-        <% else %>
-          販売停止中
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
-<%= paginate @items %>
+
+  <table class="table">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col" style="width: 10%">商品ID</th>
+        <th scope="col" style="width: 30%">商品名</th>
+        <th scope="col" style="width: 10%">税抜価格</th>
+        <th scope="col" style="width: 30%">ジャンル</th>
+        <th scope="col" style="width: 20%">ステータス</th>
+      </tr>
+    </thead>
+    <% @items.each do |item| %>
+    <tbody>
+      <tr>
+        <td><%= item.id%></td>
+        <td>
+          <u>
+            <%= link_to item.name, admin_item_path(item.id), class: "text-dark" %>
+          </u>
+        </td>
+        <td><%= item.price.to_s(:delimited) %></td>
+        <td><%= item.genre.name %></td>
+        <td>
+          <% if item.is_active? %>
+            <span class="text-success"><b>販売中</b></span>
+          <% else %>
+            <span class="text-black-50 bg-white"><b>販売停止中</b></span>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <%= paginate @items %>
+</div>
