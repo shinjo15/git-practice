@@ -1,22 +1,39 @@
-<h2>商品編集</h2>
+<div class="container">
+  <h4 class="m-2 my-4"><span class="bg-light">商品編集</span></h4>
 
-<%= form_with model: @item, url: admin_item_path do |f| %>
-  <label>商品画像</label>
-    <%= f.file_field :image, accept: "image/*" %><br>
-  <label>商品名</label>
-    <%= f.text_field :name %><br>
-  <label>商品説明</label>
-    <%= f.text_area :introduction %><br>
-  <label>ジャンル </label>
-    <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %><br>
-  <label>税抜価格</label>
-    <%= f.text_field :price %><label>円</label><br>
-  <label>販売ステータス</label>
-    <%= f.radio_button :is_active, true %>
-    <%= f.label :is_active, '販売中', value: true %>
-    <%= f.radio_button :is_active, false %>
-    <%= f.label :is_active, '販売停止中', value: false %><br>
-
-  <%= f.submit "変更を保存" %>
-
-<% end %>
+  <div class="container col-9">
+    <%= form_with model: @item, url: admin_item_path do |f| %>
+      <div class="row mb-2">
+        <label class="col-3 d-flex align-items-center"><b>商品画像</b></label>
+        <%= f.file_field :image, accept: "image/*" %><br>
+      </div>
+      <div class="row mb-2">
+        <label class="col-3 d-flex align-items-center"><b>商品名</b></label>
+        <%= f.text_field :name,  class: "col-5 form-control", placeholder: "商品名" %>
+      </div>
+      <div class="row mb-2">
+        <label class="col-3 "><b>商品説明</b></label>
+        <%= f.text_area :introduction,  class: "col-5 form-control", placeholder: "ここに説明文を記述します",  style: "height: 100px" %>
+      </div>
+      <div class="row mb-2">
+        <label class="col-3 d-flex align-items-center">ジャンル</label>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), class: "col-5 form-select" %>
+      </div>
+     <div class="row mb-2">
+        <label class="col-3 d-flex align-items-center"><b>税抜価格</b></label>
+        <%= f.text_field :price,  class: "col-5 form-control", placeholder: "1000" %><span class="d-flex align-items-center"><b>円</b></span>
+      </div>
+      <div class="row mb-2">
+        <label class="col-3"><b>販売</b>ステータス</label>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, '販売中', value: true, class: "mr-3 d-flex align-items-center" %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, '販売停止中', value: false %>
+      </div>
+      <div class="row">
+        <div class="col-4"></div>
+        <%= f.submit "変更を保存", class: "col-2 btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
