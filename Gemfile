@@ -62,3 +62,5 @@ gem 'enum_help'
 gem 'kaminari'
 
 gem 'pry-byebug'
+
+gem 'devise-bootstrap-views', '~> 1.0'
