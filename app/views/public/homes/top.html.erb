@@ -1,26 +1,31 @@
 <div class="container">
-  <div class="row">
-    <%= render 'genre_search', genre: @genre %>
-    <div class="col-lg-9">
-      <p>ようこそながのCAKEへ!<br>
-       このサイトは、ケーキ販売のECサイトになります。<br>
-       会員でない方も商品の閲覧はできますが、<br>
-       購入には会員登録が必要になります。</p>
+  <div class="row mt-5">
+    <div class="container col-3">
+      <%= render 'genre_search', genre: @genre %>
+    </div>
+    <div class="container col-9">
+      <div class="d-flex align-items-center mx-auto" style="height: 400px; width: 500px;">
+        <h5>
+          ようこそながのCAKEへ!<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </h5>
+      </div>
+
+      <h3><b>新着商品</b></h3>
+      <div class="card-deck">
+          <% @items.each do |items| %>
+          <div class="card">
+            <%= image_tag items.image, size: '100%'%><br>
+            <p class="card-text"><%= items.name %><br></p>
+            <p class="card-text"><%= (items.price*1.1).floor.to_s(:delimited) %>円</p>
+          </div>
+          <% end %>
+        
+      </div>
+     <%= link_to "全ての商品を見る＞", items_path %>
     </div>
   </div>
-
-  <h3><strong>新着商品</h3>
-    <div class="row">
-      <div class="col-lg-9">
-      <div class="card">
-      <% @items.each do |items| %>
-        <%= image_tag items.image %><br>
-        <p class="card-text"><%= items.name %><br></p>
-        <p class="card-text"><%= (items.price*1.1).floor.to_s(:delimited) %>円</p>
-      <% end %>
-      </div>
-     </div>
-   </div>
-   <%= link_to "全ての商品を見る＞", items_path %>
 </div>
 
