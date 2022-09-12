@@ -1,16 +1,22 @@
-<%= render 'public/homes/genre_search', genre: @genre %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="container col-3">
+      <%= render 'public/homes/genre_search', genre: @genre %>
+    </div>
+    <div class="container col-9">
+      <h2>商品一覧</h2><h4>(全<%= Item.where(is_active: 'true').count %>件)</h4>
 
-<h2>商品一覧</h2><h4>(全<%= Item.where(is_active: 'true').count %>件)</h4>
-
-<ul class="list-inline">
-  <% @items.each do |items| %>
-  <div class="list-inline-item">
-    <%= link_to item_path(items.id) do %>
-      <%= image_tag items.image %><br>
-      <%= items.name %><br>
-      <%= (items.price*1.1).floor.to_s(:delimited) %>円
-    <% end %>
+      <div class="d-flex flex-wrap ">
+        <% @items.each do |items| %>
+          <div class="item mr-1 mb-2">
+            <%= link_to item_path(items.id) do %>
+              <%= image_tag items.image, size: "200x150" %><br>
+              <%= items.name %><br>
+              <%= (items.price*1.1).floor.to_s(:delimited) %>円
+            <% end %>
+          </div>
+        <% end %>
+      <%= paginate @items %>
+    </div>
   </div>
-  <% end %>
-</ul>
-<%= paginate @items %>
+</div>

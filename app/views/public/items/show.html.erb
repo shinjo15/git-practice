@@ -1,28 +1,32 @@
-<%= render 'public/homes/genre_search', genre: @genre %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="container col-3">
+      <%= render 'public/homes/genre_search', genre: @genre %>
+    </div>
+    <div class="container col-9">
+      <div class="row">
+        <%= image_tag @item.image, size: "300x225" %>
+        <div class="container col-6">
+          <div class="row mb-3">
+            <h2><%= @item.name %></h2>
+          </div>
+          <div class="row mb-3">
+            <h4><%= @item.introduction %></h4>
+          </div>
+          <div class="row mb-3">
+            <h4 class="mr-1">￥<%= (@item.price*1.1).floor.to_s(:delimited) %></h4><span class="d-flex align-items-center">(税込)</span>
+          </div>
+          <div class="row mb-3">
+            <%= form_with model: @cart_item do |f| %>
+              <%= f.hidden_field :item_id, :value => @item.id  %>
+              <%= f.select :amount, *[1..10], class: "form-select" %>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= image_tag @item.image %>
-<table>
-  <thead></thead>
-  <tbody>
-    <tr>
-      <td><%= @item.name %></td>
-    </tr>
-    <tr>
-      <td><%= @item.introduction %></td>
-    </tr>
-    <tr>
-      <td>
-        ￥<%= (@item.price*1.1).floor.to_s(:delimited) %>(税込)
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= form_with model: @cart_item do |f| %>
-          <%= f.hidden_field :item_id, :value => @item.id  %>
-          <%= f.select :amount, *[1..10] %>
-          <%= f.submit "カートに入れる" %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
