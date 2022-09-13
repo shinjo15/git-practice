@@ -1,13 +1,16 @@
-<h2>注文情報入力</h2>
+<div class="container">
+  <div class="row m-2 my-4">
+    <h4 class="bg-light">注文情報入力</h4>
+  </div>
 
 <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
-  <label>支払方法</label><br>
+  <label><b>支払方法</b></label><br>
     <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
     <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %><br>
 
-  <label>お届け先</label><br>
+  <label calss="">お届け先</label><br>
     <%= f.radio_button :address_select, 0, checked: true %>
       <%= current_customer.address_display %><br>
 
@@ -31,3 +34,4 @@
 
   <%= f.submit "確認画面に進む" %>
 <% end %>
+</div>

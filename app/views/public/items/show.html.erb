@@ -18,8 +18,8 @@
           </div>
           <div class="row mb-3">
             <%= form_with model: @cart_item do |f| %>
-              <%= f.hidden_field :item_id, :value => @item.id  %>
               <%= f.select :amount, *[1..10], class: "form-select" %>
+              <%= f.hidden_field :item_id, :value => @item.id  %>
               <%= f.submit "カートに入れる", class: "btn btn-success" %>
             <% end %>
           </div>
