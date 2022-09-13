@@ -5,33 +5,44 @@
 
 <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
   <label><b>支払方法</b></label><br>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: true, class: "ml-4" %>
     <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1), class: "ml-4" %>
     <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %><br>
 
-  <label calss="">お届け先</label><br>
-    <%= f.radio_button :address_select, 0, checked: true %>
-      <%= current_customer.address_display %><br>
+  <label calss=""><b>お届け先</b></label><br>
+    <%= f.radio_button :address_select, 0, checked: true, class: "ml-4" %>
+      <%= f.label "ご自身の住所" %><br>
+      <div class="ml-5">
+        <%= current_customer.address_display %><br>
+      </div>
 
-    <%= f.radio_button :address_select, 1 %>
+    <%= f.radio_button :address_select, 1, class: "ml-4" %>
       <%= f.label "登録済み住所から選択" %><br>
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+      <div class="ml-5 mb-3 row">
+          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+      </div>
 
-    <%= f.radio_button :address_select, 2 %>
-      <%= f.label "新しいお届け先" %><br>
-
-        <label>郵便番号(ハイフンなし)</label>
-          <%= f.text_field :postal_code %><br>
-        <label>住所</label>
-          <%= f.text_field :address %><br>
-        <label>宛名</label>
-          <%= f.text_field :name %>
+    <%= f.radio_button :address_select, 2, class: "ml-4" %>
+      <%= f.label "新しいお届け先" %>
+        <div class="row mb-2">
+          <label class="ml-5 col-2 small d-flex align-items-center">郵便番号(ハイフンなし)</label>
+          <%= f.text_field :postal_code, class: "col-3 form-control", placeholder: "000000" %>
+        </div>
+        <div class="row mb-2">
+          <label class="ml-5 col-2 small d-flex align-items-center">住所</label>
+          <%= f.text_field :address, class: "col-6 form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+        </div>
+        <div class="row mb-4">
+          <label class="ml-5 col-2 small d-flex align-items-center">宛名</label>
+          <%= f.text_field :name, class: "col-3 form-control", placeholder: "令和道子" %>
+        </div>
 
     <%= f.hidden_field :postage, :value => 800 %>
 
 
-
-  <%= f.submit "確認画面に進む" %>
+<div class="row">
+    <%= f.submit "確認画面に進む", class: "m-auto btn btn-primary" %>
+</div>
 <% end %>
 </div>
