@@ -20,13 +20,13 @@
           <% end %>
           <td><%= @sam %></td>
           <td>
-            <% if order.order_status == 0 %>
+            <% if order.order_status == "waiting_for_payment" %>
               入金待ち
-            <% elsif order.order_status == 1 %>
+            <% elsif order.order_status == "payment_confirmation" %>
               入金確認
-            <% elsif order.order_status == 2 %>
+            <% elsif order.order_status == "production" %>
               制作中
-            <% elsif order.order_status == 3 %>
+            <% elsif order.order_status == "preparing_to_ship" %>
               発送準備中
             <% else %>
               発送済み

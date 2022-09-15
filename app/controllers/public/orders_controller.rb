@@ -44,6 +44,7 @@ class Public::OrdersController < ApplicationController
       order_item.purchase_price = cart_item.item.price
       order_item.production_status = 0
       order_item.save!
+      cart_item.delete
     end
     redirect_to orders_complete_path
   end

@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-2"><strong>注文ステータス</strong></div>
     <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-      <%= f.select :order_status,  [['入金待ち',0], ['入金確認',1], ['制作中',2], ['発送準備中',3], ['発送済み',4]]  %>
+      <%= f.select :order_status,  [['入金待ち',"waiting_for_payment"], ['入金確認',"payment_confirmation"], ['制作中',"production"], ['発送準備中',"preparing_to_ship"], ['発送済み',"sent"]]  %>
       <%= f.submit '更新', class: "btn btn-success" %>
     <% end %>
   </div>
@@ -35,8 +35,8 @@
         <th>製作ステータス</th>
       </thead>
       <tbody>
-        <tr>
-          <% @order.order_items.each do |order_item| %>
+        <% @order.order_items.each do |order_item| %>
+          <tr>
             <td><%= order_item.item.name %></td>
             <td><%= (order_item.purchase_price*1.1).floor.to_s(:delimited) %></td>
             <td><%= order_item.amount %></td>
@@ -47,8 +47,9 @@
                 <%= f.submit '更新', class: "btn btn-success" %>
               <% end %>
             </td>
-          <% end %>
-        </tr>
+          </tr>
+        <% end %>
+        
       </tbody>
     </table>
     <div class="ml-5">
