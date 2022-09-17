@@ -24,7 +24,7 @@
       <%= f.submit '更新', class: "btn btn-success" %>
     <% end %>
   </div>
-  
+
   <div class="row">
     <table class="table mt-4 col-7">
       <thead class="table-secondary">
@@ -41,15 +41,15 @@
             <td><%= (order_item.purchase_price*1.1).floor.to_s(:delimited) %></td>
             <td><%= order_item.amount %></td>
             <td><%= (order_item.purchase_price*1.1 * order_item.amount).floor.to_s(:delimited) %></td>
-            <td> 
-              <%= form_with model: @order_item, url: admin_order_detail_path, method: :patch do |f| %>
+            <td>
+              <%= form_with model: order_item, url: admin_order_detail_path(order_item.id), method: :patch do |f| %>
                 <%= f.select :production_status,  [['着手不可',0], ['制作待ち',1], ['制作中',2], ['制作完了',3]]  %>
                 <%= f.submit '更新', class: "btn btn-success" %>
               <% end %>
             </td>
           </tr>
         <% end %>
-        
+
       </tbody>
     </table>
     <div class="ml-5">
