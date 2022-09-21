@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+* 
+https://docs.google.com/spreadsheets/d/13ywKM9lUvJoOjPYAJ8Obdy10ySHepnLVwYfzB8SsHEk/edit?usp=sharing
